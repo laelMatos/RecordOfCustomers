@@ -13,7 +13,7 @@ namespace Customer.Service
         {
             customer.Validate();
 
-            var ExistingCustomers = customerRepository.GetCustomersByCpf(customer.Cpf).Count;
+            var ExistingCustomers = customerRepository.GetCustomers().FindAll(x => x.Cpf == customer.Cpf).Count;
 
             if (ExistingCustomers != 0)
                 throw new Exception("Customer already exists");//O cliente já existe
@@ -46,16 +46,6 @@ namespace Customer.Service
         public List<Customer> GetCustomers()
         {
             return customerRepository.GetCustomers();
-        }
-        //Get customers by cpf
-        public List<Customer> GetCustomersByCpf(string cpf)
-        {
-            return customerRepository.GetCustomersByCpf(cpf);
-        }
-        //Get customers by name
-        public List<Customer> GetCustomersByName(string name)
-        {
-            return customerRepository.GetCustomersByName(name);
         }
     }
 }
