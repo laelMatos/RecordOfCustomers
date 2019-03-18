@@ -12,9 +12,5 @@ namespace Customer
 
         Customer GetById(int id);
         List<Customer> GetCustomers();
-        //*************************************************
-        List<Customer> GetCustomersByCpf(string cpf);
-        List<Customer> GetCustomersByName(string name);
-        //*************************************************
     }
 }
