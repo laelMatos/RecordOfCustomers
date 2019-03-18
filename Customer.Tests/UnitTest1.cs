@@ -50,5 +50,40 @@ namespace Customer.Tests
             Console.WriteLine("Após o @ tem ponto : " + email.Substring(email.IndexOf("@")).Contains("."));            
             Console.WriteLine("Após o ponto tem mais de 1 caractere : " + (apos > 1));
         }
+        
+         [TestMethod]
+        public void TesteBuscaUsuarioExistente()
+        {
+            Customer customer;
+            customer = new Customer("Lael")
+            {
+                Cpf = "054.654.456-58",
+                Email = "cglael@gmail.com"
+            };
+            CustomerService customers = new CustomerService();
+            customers.Add(customer);
+            customer = new Customer("Lael")
+            {
+                Cpf = "054.654.456-58",
+                Email = "cglael@gmail.com"
+            };
+
+
+           //var teste =  customers.GetCustomers().FindAll(x=> x.Cpf == customer.Cpf).Count;
+           // if (teste >0)
+           //     throw new Exception("Cliente existente!!!");//O cliente já existe
+
+            customers.Add(customer);
+
+            foreach (Customer client in customers.GetCustomers())
+                Console.WriteLine(client.Cpf);
+
+            //foreach (Customer client in customers.GetCustomers())
+            //    if (client.Cpf == customer.Cpf)
+            //        throw new Exception("Customer already exists");//O cliente já existe
+
+
+
+        }
     }
 }
