@@ -122,9 +122,6 @@ namespace Customer.Window.UI
 
             Id = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value);
             GetAllValues(_Db.GetCustomerByID(Id));
-            //_Customer = _Db.GetCustomers().Where(x => x.Id == Id).FirstOrDefault();
-            //_Customer = _Db.GetCustomerByID(Id);
-            //GetAllValues(_Customer);
         }
         //Search
         private void Btn_Buscar_Click(object sender, EventArgs e)
@@ -191,13 +188,13 @@ namespace Customer.Window.UI
             IEnumerable<Customer> listar;
             if (busca)
             {//Busca em tempo real para Nome, ao digitar no Txt_Search.
-                listar = _Db.GetCustomersByName(Txt_Search.Text);
+                listar = _Db.GetCustomers().Where(x => x.Name.Contains(Txt_Search.Text));
                 lb_AuantityFound.Text = "Encontrado: " + listar.Count();
                 dataGridView1.DataSource = listar.ToList();
 
             } else
             {//Busca em tempo real para CPF, ao digitar no Txt_Search.
-                listar = _Db.GetCustomersByCpf(Txt_Search.Text);
+                listar = _Db.GetCustomers().Where(x => x.Cpf.Contains(Txt_Search.Text));
                 lb_AuantityFound.Text = "Encontrado: " + listar.Count();
                 dataGridView1.DataSource = listar.ToList();
             }
