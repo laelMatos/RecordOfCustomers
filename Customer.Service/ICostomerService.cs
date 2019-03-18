@@ -10,9 +10,5 @@ namespace Customer.Service
         void Delete(Customer customer);
         Customer GetCustomerByID(int id);
         List<Customer> GetCustomers();
-        //*************************************************
-        List<Customer> GetCustomersByCpf(string cpf);
-        List<Customer> GetCustomersByName(string name);
-        //*************************************************
     }
 }
