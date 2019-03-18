@@ -39,18 +39,5 @@ namespace Customer.Infra
         public List<Customer> GetCustomers(){
             return CustomersInDataBase.ToList<Customer>();
         }
-        //
-        //*************************************************
-        public List<Customer> GetCustomersByCpf(String cpf)
-        {
-            IEnumerable<Customer> listar = CustomersInDataBase.Where(x => x.Cpf.Contains(cpf)).ToList();
-            return  listar.ToList();
-        }
-        //
-        public List<Customer> GetCustomersByName(String name)
-        {
-            IEnumerable<Customer> listar = CustomersInDataBase.Where(x => x.Name.Contains(name)).ToList();
-            return  listar.ToList();
-        }
     }
 }
